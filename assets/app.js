@@ -53,7 +53,6 @@ operation.forEach(e => {
 
 
 //RETORNA O RESULTADO NA TELA
-
 equal.addEventListener('click', () => {
     equalCalc();
     if(!isFinite(total)) {
@@ -64,6 +63,8 @@ equal.addEventListener('click', () => {
 
 });
 
+
+//TRATA AS OPERAÇÕES REQUISITADAS E RETORNA O TOTAL
 function equalCalc() {
 
     switch (op) {
