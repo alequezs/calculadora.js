@@ -102,3 +102,23 @@ h1 > span {
 .fade-in-out {
     opacity: 0;
 }
+
+@media only screen and (max-width: 500px) {
+    .container-calc {
+        width: 300px;
+    }
+    .display {
+        height: 60px;
+    }
+    .display > #visor {
+        font-size: 2.8rem;
+    }
+    .buttons button {
+        padding: 10px;
+        font-size: 2rem;
+    }
+    h1{
+        font-size: 2.5rem;
+    }
+    
+}
