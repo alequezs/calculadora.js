@@ -45,12 +45,6 @@ operation.forEach(e => {
     });
 });
 
-operation.forEach(e => {
-    e.addEventListener('mouseup', () => {
-        display.style.opacity(0);
-    })
-})
-
 
 //RETORNA O RESULTADO NA TELA
 equal.addEventListener('click', () => {
