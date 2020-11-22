@@ -27,50 +27,43 @@ number.forEach((e) => {
 
 //MOSTRA NA TELA OS NÚMEROS DIGITADOS
 function mostrarDisplay(digito) {
-    if (digito === '.' && displayValue.includes('.')) {
+    if (digito === '.' && values[indice].includes('.')) {
         return
     }
-    const clearScreen = displayValue === '0' || clearDisplay;
-    const currentValue = clearScreen ? '' : displayValue;
-    displayValue = currentValue + digito;
+    let clearScreen = values[indice] === '0' || clearDisplay;
+    let currentValue = clearScreen ? '' : values[indice];
+    values[indice] = currentValue + digito;
 
     if (digito != '.') {
-        const newValue = parseFloat(displayValue)
+        const newValue = parseFloat(values[indice])
         values[indice] = newValue;
     }
 };
 
 operation.forEach((e => {
     e.addEventListener('click', e => {
-        opt = e.target.value;
-        if (indice == 0) {
-            displayValue = '0';
+        if (indice === 0) {
+            opt = e.target.value;
             indice = 1;
             clearScreen = true;
         } else {
-            const currentOpt = opt;
-
-            if (currentOpt == '+') {
-                values[0] = (values[0] + values[1]);
-            } else if (currentOpt == '-') {
-                values[0] = (values[0] - values[1]);
-            } else if (currentOpt == '*') {
-                values[0] = (values[0] * values[1]);
-            } else if (currentOpt == '/') {
-                values[0] = (values[0] / values[1]);
-            } else {
-                equals = opt === '=';
-                updateDisplay(values[0]);
+            let equals = opt === '=';
+            let currentOpt = opt;
+            try {
+                values[0] = eval(`${values[0]} ${opt} ${values[1]}`);
+            } catch (error) {
+                values[0] = values[0]
             }
-            opt = equals ? null : opt;
+            values[1] = 0;
+            updateDisplay(values[0]);
             indice = equals ? 0 : 1;
-            clearScreen = !equals;
-            displayValue = '0';
-            values[1] = 0
+            clearScreen = true;
         }
 
-
-        updateDisplay(values[0]);
+        if(opt == '=') {
+            opt = null;
+            values[1] = 0;
+        }
     })
 }))
 
