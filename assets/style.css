@@ -103,7 +103,7 @@ h1 > span {
     opacity: 0;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
     .container-calc {
         width: 300px;
     }
