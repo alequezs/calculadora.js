@@ -70,8 +70,12 @@ operation.forEach((e => {
 
 //ADICIONA A FUNÇÃO DE APAGAR TODOS OS DADOS DA CALCULADORA
 del.addEventListener('click', () => {
-    numeroDisplay = '';
-    display.innerHTML = '0';
+    displayValue = '0';
+    clearDisplay = false;
+    opt = null;
+    values = [0, 0];
+    indice = 0;
+    updateDisplay('0');
 });
 
 
