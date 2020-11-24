@@ -60,11 +60,20 @@ operation.forEach((e => {
                     displayValue = values[0]
                     updateDisplay(displayValue)
                     break;
-                case '-': values[0] = values[0] - values[1]
+                case '-':
+                    values[0] = values[0] - values[1]
+                    displayValue = values[0]
+                    updateDisplay(displayValue)
                     break;
-                case '*': values[0] = values[0] * values[1]
+                case '*':
+                    values[0] = values[0] * values[1]
+                    displayValue = values[0]
+                    updateDisplay(displayValue)
                     break;
-                case '/': values[0] = values[0] / values[1]
+                case '/':
+                    values[0] = values[0] / values[1]
+                    displayValue = values[0]
+                    updateDisplay(displayValue)
                     break;
             }
         }
