@@ -16,54 +16,60 @@ function updateDisplay(currentValue) {
 }
 updateDisplay(displayValue);
 
-//ADICIONA O CLICK PARA CADA NÚEMRO DA CALCULADORA
+//ADICIONA O CLICK PARA CADA NÚMERO DA CALCULADORA
 number.forEach((e) => {
     e.addEventListener('click', el => {
         digit = el.target.value;
-        mostrarDisplay(digit);
-        updateDisplay(values[indice]);
+        mostrarDisplay(digit)
+        updateDisplay(displayValue)
+        clearDisplay = false;
     })
 });
 
 //MOSTRA NA TELA OS NÚMEROS DIGITADOS
 function mostrarDisplay(digito) {
-    if (digito === '.' && values[indice].includes('.')) {
+    if (digito == '.' && displayValue.includes('.')) {
         return
     }
-    let clearScreen = values[indice] === '0' || clearDisplay;
-    let currentValue = clearScreen ? '' : values[indice];
-    values[indice] = currentValue + digito;
 
-    if (digito != '.') {
-        const newValue = parseFloat(values[indice])
-        values[indice] = newValue;
+    clearDisplay = displayValue == '0' || clearDisplay
+    const currentValue = clearDisplay ? '' : displayValue
+    displayValue = currentValue + digito
+
+    if (digito !== '.') {
+        const newValue = parseFloat(displayValue)
+        values[indice] = newValue
+        console.log(values)
     }
+
+    return displayValue;
+
 };
 
 operation.forEach((e => {
     e.addEventListener('click', e => {
-        if (indice === 0) {
-            opt = e.target.value;
-            indice = 1;
-            clearScreen = true;
-        } else {
-            let equals = opt === '=';
-            let currentOpt = opt;
-            try {
-                values[0] = eval(`${values[0]} ${opt} ${values[1]}`);
-            } catch (error) {
-                values[0] = values[0]
-            }
-            values[1] = 0;
-            updateDisplay(values[0]);
-            indice = equals ? 0 : 1;
-            clearScreen = true;
-        }
+        opt = e.target.value;
 
-        if(opt == '=') {
-            opt = null;
-            values[1] = 0;
+        if (indice === 0) {
+            indice = 1;
+            clearDisplay = true;
+        } else {
+            switch (opt) {
+                case '+':
+                    values[0] = values[0] + values[1]
+                    displayValue = values[0]
+                    updateDisplay(displayValue)
+                    break;
+                case '-': values[0] = values[0] - values[1]
+                    break;
+                case '*': values[0] = values[0] * values[1]
+                    break;
+                case '/': values[0] = values[0] / values[1]
+                    break;
+            }
         }
+        clearDisplay = true;
+        values[1] = 0
     })
 }))
 
