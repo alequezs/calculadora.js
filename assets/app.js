@@ -49,8 +49,7 @@ function mostrarDisplay(digito) {
 operation.forEach((e => {
     e.addEventListener('click', e => {
         opt = e.target.value;
-
-        if (indice === 0) {
+         if (indice === 0) {
             indice = 1;
             clearDisplay = true;
         } else {
@@ -58,25 +57,26 @@ operation.forEach((e => {
                 case '+':
                     values[0] = values[0] + values[1]
                     displayValue = values[0]
-                    updateDisplay(displayValue)
                     break;
                 case '-':
                     values[0] = values[0] - values[1]
                     displayValue = values[0]
-                    updateDisplay(displayValue)
                     break;
                 case '*':
                     values[0] = values[0] * values[1]
                     displayValue = values[0]
-                    updateDisplay(displayValue)
                     break;
                 case '/':
                     values[0] = values[0] / values[1]
                     displayValue = values[0]
-                    updateDisplay(displayValue)
                     break;
+                default: 
+                    updateDisplay(displayValue)
+                    opt = null;
             }
+            updateDisplay(displayValue)
         }
+        opt == null;
         clearDisplay = true;
         values[1] = 0
     })
