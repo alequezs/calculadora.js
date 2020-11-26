@@ -48,7 +48,7 @@ function mostrarDisplay(digito) {
 
 operation.forEach((e => {
     e.addEventListener('click', e => {
-        opt = e.target.value;
+        
          if (indice === 0) {
             indice = 1;
             clearDisplay = true;
@@ -76,7 +76,7 @@ operation.forEach((e => {
             }
             updateDisplay(displayValue)
         }
-        opt == null;
+        opt = null;
         clearDisplay = true;
         values[1] = 0
     })
